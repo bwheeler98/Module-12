@@ -97,18 +97,16 @@ function buildCharts(sample) {
       hoverinfo: otu_labels,
       mode: 'markers',
       marker: {
-        color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+        color: otu_ids,
         opacity: [1, 0.8, 0.6, 0.4],
-        size: [40, 60, 80, 100]
+        size: sample_values
       }
     }];
 
     var bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
-      margin: {t:0},
       hovermode: "closest",
       xaxis: {title: "OTU ID" },
-      margin: {t:0}
     };
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
