@@ -92,8 +92,8 @@ function buildCharts(sample) {
     Plotly.newPlot("bar", barData, barLayout);
 
     var bubbleData = [{
-      x: sample_values.slice(0,10).reverse(),
-      y: yticks,
+      x: otu_ids,
+      y: sample_values,
       hoverinfo: otu_labels,
       mode: 'markers',
       marker: {
@@ -105,7 +105,10 @@ function buildCharts(sample) {
 
     var bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
-      xaxis: {title: "OTU ID" }
+      margin: {t:0},
+      hovermode: "closest",
+      xaxis: {title: "OTU ID" },
+      margin: {t:0}
     };
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
