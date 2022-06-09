@@ -90,5 +90,24 @@ function buildCharts(sample) {
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
+
+    var bubbleData = [{
+      x: sample_values.slice(0,10).reverse(),
+      y: yticks,
+      hoverinfo: otu_labels,
+      mode: 'markers',
+      marker: {
+        color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+        opacity: [1, 0.8, 0.6, 0.4],
+        size: [40, 60, 80, 100]
+      }
+    }];
+
+    var bubbleLayout = {
+      title: "Bacteria Cultures Per Sample",
+      xaxis: {title: "OTU ID" }
+    };
+
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
   });
 }
