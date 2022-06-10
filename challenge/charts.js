@@ -113,10 +113,11 @@ function buildCharts(sample) {
   
   // Deliverable 3
     var metadata = data.metadata;
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
-    var gaugeWfreq = Object.values(result);
-
+    var gresultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var gresult = gresultArray[0];
+    var gwfreq = gresult.wfreq;
+    var gaugeWfreq = parseFloat(gwfreq);
+    // console.log(gaugeWfreq);
     var gaugeData = [{
       domain: {x: [0,1], y: [0,1]},
       value: gaugeWfreq,
@@ -139,7 +140,7 @@ function buildCharts(sample) {
       title: "Belly Button Washing Frequency",
       width: 300,
       height: 300,
-      // margin: { t: 25, r: 25, l: 25, b: 25 },
+      margin: { t: 25, r: 25, l: 25, b: 25 },
     };
 
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
