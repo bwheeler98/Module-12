@@ -110,5 +110,38 @@ function buildCharts(sample) {
     };
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+  
+  // Deliverable 3
+    var metadata = data.metadata;
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
+    var gaugeWfreq = Object.values(result);
+
+    var gaugeData = [{
+      domain: {x: [0,1], y: [0,1]},
+      value: gaugeWfreq,
+      type: "indicator",
+      mode: "gauge+number",
+      title: {text: "Scrubs per Week"},
+      gauge: {
+       axis: { range: [null, 10], tickwidth: 1, tickcolor: "black" },
+       steps: [
+        {range: [0, 2], color: "red" },
+        {range: [2, 4], color: "orange" },
+        {range: [4, 6], color: "yellow"},
+        {range: [6, 8], color: "lightgreen"},
+        {range: [8, 10], color: "green"}],
+        bar: {color: "black"}
+      }
+  
+    }];
+    var gaugeLayout = { 
+      title: "Belly Button Washing Frequency",
+      width: 300,
+      height: 300,
+      // margin: { t: 25, r: 25, l: 25, b: 25 },
+    };
+
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 }
